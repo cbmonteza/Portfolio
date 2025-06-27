@@ -9,11 +9,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h2>Login</h2>
+     <h2>Login</h2>
   <input id="username" placeholder="Username"><br><br>
   <input id="password" type="password" placeholder="Password"><br><br>
   <button onclick="login()">Login</button>
-
+  <style>
+    .center-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: lightblue;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="center-box">
+    Centered Box
+  </div>
   <p id="message"></p>
 
   <script>
@@ -28,7 +42,6 @@
       }
     }
   </script>
-    
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
