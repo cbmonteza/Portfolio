@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const password = document.getElementById("password").value;
 
         // Check credentials
-        if (username === "cherry" && password === "admin123") {
+        if (username === "cherry123" && password === "admin123") {
             alert("Login successful!");
             loginSection.style.display = "none"; // Hide login section
             logoutSection.style.display = "block"; // Show logout section
