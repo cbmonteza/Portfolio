@@ -430,7 +430,55 @@
             </div>
         </div>
     </footer>
-
+    <script>
+        // Handle login form submission
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+           
+            // Simple validation (in a real app, you would validate against a server)
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+           
+            if (username && password) {
+                // Hide login section
+                document.querySelector('.login-section').style.display = 'none';
+               
+                // Show all other sections
+                document.getElementById('navbar').style.display = 'block';
+                document.querySelector('.footer').style.display = 'block';
+               
+                const sections = document.querySelectorAll('.section:not(.login-section)');
+                sections.forEach(section => {
+                    section.style.display = 'block';
+                });
+               
+                // Scroll to home section
+                document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Please enter both username and password');
+            }
+        });
+       
+        function logout() {
+            // Hide all sections except login
+            document.getElementById('navbar').style.display = 'none';
+            document.querySelector('.footer').style.display = 'none';
+           
+            const sections = document.querySelectorAll('.section:not(.login-section)');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+           
+            // Show login section
+            document.querySelector('.login-section').style.display = 'block';
+           
+            // Reset form
+            document.getElementById('login-form').reset();
+           
+            // Scroll to login section
+            document.getElementById('login').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
