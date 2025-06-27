@@ -9,38 +9,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-     <h2>Login</h2>
-  <input id="username" placeholder="Username"><br><br>
-  <input id="password" type="password" placeholder="Password"><br><br>
-  <button onclick="login()">Login</button>
-  <style>
-    .center-box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: lightblue;
-      padding: 20px;
-    }
+    <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; }
+    #portfolio, #logoutBtn { display: none; }
   </style>
 </head>
 <body>
-  <div class="center-box">
-    Centered Box
+  <!-- Login Form -->
+  <div id="loginForm">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+    <button onclick="login()">Log In</button>
   </div>
-  <p id="message"></p>
+
+  <!-- Portfolio Page -->
+  <div id="portfolio">
+    <h1>Welcome to My Portfolio!</h1>
+    <p>This is private content visible after login.</p>
+    <button id="logoutBtn" onclick="logout()">Log Out</button>
+  </div>
 
   <script>
-    function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
+    const USER = "admin";
+    const PASS = "1234";
 
-      if (user === "admin" && pass === "1234") {
-        document.getElementById("message").innerText = "Login successful!";
+    function login() {
+      const u = document.getElementById("username").value;
+      const p = document.getElementById("password").value;
+      if (u === USER && p === PASS) {
+        localStorage.setItem("loggedIn", "true");
+        showPortfolio();
       } else {
-        document.getElementById("message").innerText = "Invalid credentials.";
+        alert("Wrong username or password.");
       }
     }
+
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      showLogin();
+    }
+
+    function showPortfolio() {
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("portfolio").style.display = "block";
+    }
+
+    function showLogin() {
+      document.getElementById("loginForm").style.display = "block";
+      document.getElementById("portfolio").style.display = "none";
+    }
+
+    // Show correct screen on page load
+    window.onload = () => {
+      if (localStorage.getItem("loggedIn") === "true") {
+        showPortfolio();
+      } else {
+        showLogin();
+      }
+    };
   </script>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
